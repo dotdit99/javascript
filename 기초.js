@@ -47,3 +47,19 @@ var test3;
 
 console.log(test3);
 
+// 데이터 타입 : 동적 타입의 언어이므로 값이 대입될 때 데이터형이 결정 됨
+// ┗ 원시 타입 : 값이 저장되는 데이터 타입 : string, number, boolean, undefined, null
+// ┗ 참조 타입 : Array(순서가 있는 값들의 리스트), Object(키-값 구조의 데이터 집합), Function(코드 블록)
+
+let test10 = "1000.0";
+console.log(typeof test10);
+
+name = "곰돌이";
+addr = "충청남도 천안시";
+let greeting = `안녕하세요. ${name}님 환영합니다.~`;
+let age1 = 18;
+
+console.log(name + " : " + addr);
+console.log(greeting);
+
+// 템플릿 문자열을 이용해 구구단 출력하기
