@@ -63,3 +63,63 @@ console.log(name + " : " + addr);
 console.log(greeting);
 
 // 템플릿 문자열을 이용해 구구단 출력하기
+for (let i = 2; i <= 9; i++) {
+  let table = `\n--- ${i}단 ---\n`;
+  for (let j = 1; j <= 9; j++) {
+    table += `${i} x ${j} = ${i * j}\n`;
+  }
+  console.log(table);
+}
+
+// prompt-sync 로 입력 받은 값 출력 하기
+const prompt = require("prompt-sync")(); // 키보드를 통해서 입력 받기, 기본적으로 문자열로 입력 됨 ()호출
+let num1 = parseInt(prompt("첫번째 정수 입력 : "));
+let num2 = parseInt(prompt("두번째 정수 입력 : "));
+
+console.log(num1 + num2);
+
+// 입력 받은 수가 양수인지 음수인지 판별 하기
+let num3 = parseInt(prompt("정수 입력 : ")); // 입력 받은 문자열을 정수로 반환
+if (num3 > 0) {
+  console.log("num3은 양수입니다.");
+} else if (num3 < 0) {
+  console.log("num3은 음수 입니다.");
+} else {
+  console.log("num3은 0 입니다.");
+}
+
+// 숫자형(number) : 정수와 실수를 포함하고 있음
+console.log(0.1 + 0.2); // 근사치 계싼법이라 정확한 값이 안 나옴
+
+// 논리형 : 참과 거짓을 구분하는 용도
+console.log(Boolean(1)); // true
+console.log(Boolean(0)); // false
+console.log(Boolean("")); // false
+console.log(Boolean(" ")); // true 공백도 하나의 "문자"라
+console.log(Boolean(undefined)); // false
+console.log(Boolean(null)); // false
+
+// 배열 : 여러개의 데이터를 연속으로 저장할 때 사용, 같은 데이터 타입일 필요 없음, 크기 지정이 필요 없음
+let member = ["아이브", ["안유진", "장원영", "이서", "레이"], [23, 22, 19, 19], { "coffee": 2000 }, [123, 456, 789]];
+console.log(member);
+
+// 아이브
+console.log(member[0]);
+// 이서
+console.log(member[1][2]);
+// 멤버 이름 전부 출력
+console.log(member[1]);
+// 커피 가격 출력
+console.log(member[3].coffee);
+// 장원영의 원만 출력
+console.log(member[1][1][1]);
+
+// 객체 리터럴 : 객체를 정의하는 가장 간단한 방법
+const info = {
+  email: "jks2024@gmail.com",
+  pwd: "1234",
+  name: "곰돌이",
+};
+
+console.log(info);
+
