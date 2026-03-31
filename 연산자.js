@@ -1,67 +1,87 @@
-// 제어문 : 프로그래밍에서 흐름 제어를 위해 사용 됨
-// 조건문 : 주어진 조건에 따라 수행을 분기 하는 것 (삼항연산자, if, if ~ else if ~ else, switch ~ case)
-// 반복문 : 주어진 조건이 참인 동안 반복 수행 하는 것 (while, do ~ while, for, for in, for of)
+// 산술연산자 : +, -, *, /, %, **(거듭 제곱 연산자)
 const prompt = require("prompt-sync")();
 
-// 삼항연산자 사용
-// ┗ 나이를 입력 받아 19세 부터는 성인, 19세 미만은 미성년자를 삼항연산자를 사용해서 처리하기
-let age = Number(prompt("나이 입력 : "));
-console.log("당신은 " + (age >= 19 ? "성인" : "미성년자") + "입니다.");
+let x = 10;
+let y = 4;
+console.log(x + y);
+console.log(x - y);
+console.log(x * y);
+console.log(x / y);
+console.log(parseInt(x / y));
+console.log(x ** y);
 
-// if ~ else 문을 이용해 등급 출력하기
-let kor = Number(prompt("국어 입력: "));   // ✅ ) 추가
-let eng = Number(prompt("영어 입력: "));   // ✅ ) 추가
-let math = Number(prompt("수학 입력: ")); // ✅ ) 추가
+// 비교연산자
+let a = 10;
+let b = "10";
+console.log(a == b);
+console.log(a === b);
+console.log(a != b);
+console.log(a !== b);
 
-if (kor >= 0 && kor <= 100 && eng >= 0 && eng <= 100 && math >= 0 && math <= 100) {
-  let total = kor + eng + math;
-  let avg = total / 3;
-
-  if (avg >= 90) {
-    console.log("A");
-  } else if (avg >= 80) {
-    console.log("B");
-  } else if (avg >= 70) {
-    console.log("C");
-  } else if (avg >= 60) {
-    console.log("D");
-  } else {
-    console.log("F");
-  }                                               // ✅ 안쪽 if 여기서 닫기
-
-} else {                                          // ✅ 바깥 if의 else (위치 수정)
-  console.log("성적 입력이 잘못 되었습니다.");    // ✅ " 추가
+// ─────────────────────────────────────
+// 예제 1. 홀짝 판별기
+// ─────────────────────────────────────
+let num1 = Number(prompt("숫자 입력 : "));
+if (num1 % 2 === 0) {
+  console.log(num1 + "은(는) 짝수입니다.");
+} else {
+  console.log(num1 + "은(는) 홀수입니다.");
 }
 
-// 스위치문 : 조건식이 아닌 조건값이 와야 함 (정수, 문자열, 실수는 안됨), break 탈출문 필요
-// 좌변 값, 연산자, 우변 값을 입력 받아 산술 연산(+, -, *, /, %)을 수행하는 스위치문 만들기
-// 입력 : 23 + 45
-// 출력 : 68
-
-process
-let x = Number(prompt("좌변 값 입력: "));
-let op = prompt("연산자 입력: ");
-let y = Number(prompt("우변 값 입력: "));
-
-switch (op) {
-  case "+":
-    console.log(x + y);
-    break;
-  case "-":
-    console.log(x - y);
-    break;
-  case "*":
-    console.log(x * y);
-    break;
-  case "/":
-    console.log(x / y);
-    break;
-  case "%":
-    console.log(x % y);
-    break;
-  default:
-    console.log("계산식이 잘못 입력 되었습니다.");
-
+// ─────────────────────────────────────
+// 예제 2. 학점 계산기
+// ─────────────────────────────────────
+let score = Number(prompt("점수 입력 : "));
+if (score >= 90) {
+  console.log("학점 : A");
+} else if (score >= 80) {
+  console.log("학점 : B");
+} else if (score >= 70) {
+  console.log("학점 : C");
+} else if (score >= 60) {
+  console.log("학점 : D");
+} else {
+  console.log("학점 : F");
 }
 
-// BMI 계산기 : 
+// ─────────────────────────────────────
+// 예제 3. 입력받은 구구단 출력하기
+// ─────────────────────────────────────
+let dan = Number(prompt("구구단 입력 (2~9) : "));
+for (let i = 1; i <= 9; i++) {
+  console.log(dan + " x " + i + " = " + dan * i);
+}
+
+// ─────────────────────────────────────
+// 예제 4. 입력받은 수까지의 합
+// ─────────────────────────────────────
+let num4 = Number(prompt("숫자 입력 : "));
+let sum = 0;
+for (let i = 1; i <= num4; i++) {
+  sum += i;
+}
+console.log("1 ~ " + num4 + " 합계 : " + sum);
+
+// ─────────────────────────────────────
+// 예제 5. 별 출력하기
+// ─────────────────────────────────────
+let num5 = Number(prompt("숫자 입력 : "));
+for (let i = 1; i <= num5; i++) {
+  console.log("★".repeat(i));
+}
+
+// ─────────────────────────────────────
+// 예제 6. 양수, 음수 개수 구하기
+// ─────────────────────────────────────
+let plus = 0;
+let minus = 0;
+for (let i = 1; i <= 10; i++) {
+  let num6 = Number(prompt(i + "번째 수 입력 : "));
+  if (num6 > 0) {
+    plus++;
+  } else if (num6 < 0) {
+    minus++;
+  }
+}
+console.log("양수 개수 : " + plus);
+console.log("음수 개수 : " + minus);
