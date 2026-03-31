@@ -1,86 +1,67 @@
-// 산술연산자 : +, -, *, /, %, **(거듭 제곱 연산자)
+// 제어문 : 프로그래밍에서 흐름 제어를 위해 사용 됨
+// 조건문 : 주어진 조건에 따라 수행을 분기 하는 것 (삼항연산자, if, if ~ else if ~ else, switch ~ case)
+// 반복문 : 주어진 조건이 참인 동안 반복 수행 하는 것 (while, do ~ while, for, for in, for of)
 const prompt = require("prompt-sync")();
-let x = 10;
-let y = 4;
 
-console.log(x + y);
-console.log(x - y);
-console.log(x * y);
-console.log(x / y); // 결과값이 실수이면 실수 타입으로 결정 남
-console.log(parseInt(x / y));
-console.log(x ** y);
+// 삼항연산자 사용
+// ┗ 나이를 입력 받아 19세 부터는 성인, 19세 미만은 미성년자를 삼항연산자를 사용해서 처리하기
+let age = Number(prompt("나이 입력 : "));
+console.log("당신은 " + (age >= 19 ? "성인" : "미성년자") + "입니다.");
 
-// 비교 연산자
-let a = 10;
-let b = "10";
-console.log(a == b) // 동등연산자 : 두 값이 같은지를 비교
-console.log(a === b) // 일치연산자 : 두 값과 데이터 타입이 같은지 비교
+// if ~ else 문을 이용해 등급 출력하기
+let kor = Number(prompt("국어 입력: "));   // ✅ ) 추가
+let eng = Number(prompt("영어 입력: "));   // ✅ ) 추가
+let math = Number(prompt("수학 입력: ")); // ✅ ) 추가
 
-console.log(a != b);
-console.log(a !== b);
+if (kor >= 0 && kor <= 100 && eng >= 0 && eng <= 100 && math >= 0 && math <= 100) {
+  let total = kor + eng + math;
+  let avg = total / 3;
 
-// 예제1. 홀짝 판별기
-let a1 = Number(prompt("숫자 입력: "));
-if (a1 % 2 == 0) {
-  console.log("짝 입니다.");
-} else {
-  console.log("홀 입니다.");
+  if (avg >= 90) {
+    console.log("A");
+  } else if (avg >= 80) {
+    console.log("B");
+  } else if (avg >= 70) {
+    console.log("C");
+  } else if (avg >= 60) {
+    console.log("D");
+  } else {
+    console.log("F");
+  }                                               // ✅ 안쪽 if 여기서 닫기
+
+} else {                                          // ✅ 바깥 if의 else (위치 수정)
+  console.log("성적 입력이 잘못 되었습니다.");    // ✅ " 추가
 }
 
-// 예제2. 학점 계산기 : 90점 이상 A, 80점 이상 B, 70점 이상 C, 60점 이상 D, 나머지 F
-let a2 = Number(prompt("점수 입력: "));
-if (a2 >= 90) {
-  console.log("A 학점입니다.");
-} else if (a2 >= 80) {
-  console.log("B 학점입니다.");
-} else if (a2 >= 70) {
-  console.log("C 학점입니다.");
-} else if (a2 >= 60) {
-  console.log("D 학점 입니다.");
-} else {
-  console.log("F 학점입니다.");
+// 스위치문 : 조건식이 아닌 조건값이 와야 함 (정수, 문자열, 실수는 안됨), break 탈출문 필요
+// 좌변 값, 연산자, 우변 값을 입력 받아 산술 연산(+, -, *, /, %)을 수행하는 스위치문 만들기
+// 입력 : 23 + 45
+// 출력 : 68
+
+process
+let x = Number(prompt("좌변 값 입력: "));
+let op = prompt("연산자 입력: ");
+let y = Number(prompt("우변 값 입력: "));
+
+switch (op) {
+  case "+":
+    console.log(x + y);
+    break;
+  case "-":
+    console.log(x - y);
+    break;
+  case "*":
+    console.log(x * y);
+    break;
+  case "/":
+    console.log(x / y);
+    break;
+  case "%":
+    console.log(x % y);
+    break;
+  default:
+    console.log("계산식이 잘못 입력 되었습니다.");
+
 }
 
-// 예제3. 입력받은 구구단 출력하기
-let a3 = Number(prompt("구구단 단 수 입력: "));
-let table = `\n--- ${a3}단 ---\n`;
-for (let j = 1; j <= 9; j++) {
-  table += `${a3} x ${j} = ${a3 * j}\n`;
-}
-
-console.log(table);
-// 예제4. 입력받은 수까지의 합을 구하기
-let total = 0;
-let a4 = Number(prompt("수 입력: "));
-for (let i = 1; i <= a4; i++) {
-  total += i
-}
-
-console.log(total);
-// 예제5. 별 출력하기
-// ┗ 수를 입력하세요:5
-// *
-// **
-// ***
-// ****
-// *****
-let a5 = Number(prompt("별 수 입력: "));
-for (let h = 1; h <= a5; h++) {
-  console.log("*".repeat(h));
-}
-
-// 예제 6. 10개의 수를 입력 받아 양수, 음수 개수 구하기
-let a6 = [];
-let cnt1 = 0;
-let cnt2 = 0;
-for (let i = 1; i <= 10; i++) {
-  a6.push(Number(prompt(`${i}번째 수 입력: `)));
-  if (a6[i - 1] > 0) {
-    cnt1++;
-  } else if (a6[i - 1] < 0) {
-    cnt2++;
-  }
-}
-
-console.log("양수 개수 : " + cnt1);
-console.log("음수 개수 : " + cnt2);
+// BMI 계산기 : 
