@@ -1,6 +1,6 @@
 // 1. 각 이름 앞에 학생 : 을 붙인 새 배열
 const names = ["김철수", "이영희", "박민준"];
-const students = names.map(e => "학생 : " + e);
+const students = names.map((e) => `학생: ${e}`);
 console.log(students);
 // 출력 결과 : [ '학생 : 김철수', '학생 : 이영희', '학생 : 박민준' ]
 

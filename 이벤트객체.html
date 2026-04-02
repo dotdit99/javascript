@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트객체</title>
+  <style>
+    .btn {
+      width: 200px;
+      height: 60px;
+      background-color: royalblue;
+      color: white;
+    }
+
+    .btn:active {
+      transform: translateY(2px);
+    }
+  </style>
+</head>
+
+<body>
+  <button class="btn">클릭</button>
+  <!-- input 요소 추가 -->
+  <input type="text" placeholder="키를 입력하세요">
+  <a href="http://www.naver.com">네이버로 이동</a>
+
+  <script>
+    const btnEl = document.querySelector("button");
+    btnEl.addEventListener("click", (event) => {
+      console.log(event.clientX); // 클릭한 X 좌표
+      console.log(event.clientY); // 클릭한 Y 좌표
+    });
+
+    const inputEl = document.querySelector("input");
+    inputEl.addEventListener("keydown", (e) => {
+      console.log(`keyCode : ${e.keyCode}`);   // 누른 키의 코드
+      console.log(`ctrlKey : ${e.ctrlKey}`);   // Ctrl 키 눌렸는지 (true/false)
+      console.log(`altKey  : ${e.altKey}`);    // Alt 키 눌렸는지 (true/false)
+      console.log(`shiftkey : ${e.shiftKey}`);
+      if (e.key === "Enter") {
+        console.log("엔터키가 눌러졌습니다.");
+        inputEl.value = "";
+      }
+    });
+
+    const aEl = document.querySelector("a");
+    aEl.addEventListener("click", (e) => {
+      e.preventDefault();
+    });
+
+  </script>
+</body>
+
+</html>

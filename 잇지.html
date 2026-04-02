@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>버튼 클릭시 상세 설명 표시 및 닫기</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .wrap {
+      display: flex;
+      gap: 40px;
+      margin-top: 20px;
+      align-items: flex-start;
+    }
+
+    .card {
+      position: relative;
+      width: 250px;
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+    }
+
+    .btn-overlay {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      padding: 6px 12px;
+      font-size: 13px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .detail {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .detail h2 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .detail p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    .btn-close {
+      padding: 6px 12px;
+      font-size: 13px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>실습문제-버튼 클릭시 상세 설명 표시 및 닫기</h1>
+  <ul>
+    <li>인라인 방식과 이벤트 등록 방식으로 구현</li>
+  </ul>
+
+  <div class="wrap">
+
+    <!-- 인라인 방식 -->
+    <div class="card" id="card1">
+      <img src="잇지.jpeg" alt="잇지">
+      <!-- 인라인 방식 : onclick 속성에 직접 함수 호출 -->
+      <button class="btn-overlay" onclick="showDetail('card1')">상세 설명 보기</button>
+      <div class="detail" id="detail1">
+        <h2>그룹 잇지</h2>
+        <p>
+          팀명 'ITZY'는 '너희가 원하는 거 전부 있지? 있지!'라는 뜻을 가지고 있으며,
+          정식 한글 표기법은 있지이다. 혹 영어명인 'ITZY'로만 들어본 사람들이
+          한글로는 어떻게 적는지 몰라 '잇지'라고 부르는 경우도 꽤 많이 있는데,
+          '있지'라고 불러야 한다며 정정해주는 것이 팬덤 잇지에게는 일상이 되었다.
+        </p>
+        <!-- 인라인 방식 : 닫기 버튼도 onclick으로 처리 -->
+        <button class="btn-close" onclick="hideDetail('card1')">상세 설명 닫기</button>
+      </div>
+    </div>
+
+    <!-- 이벤트 등록 방식 -->
+    <div class="card" id="card2">
+      <img src="잇지.jpeg" alt="잇지">
+      <button class="btn-overlay" id="btnOpen2">상세 설명 보기</button>
+      <div class="detail" id="detail2">
+        <h2>그룹 잇지</h2>
+        <p>
+          팀명 'ITZY'는 '너희가 원하는 거 전부 있지? 있지!'라는 뜻을 가지고 있으며,
+          정식 한글 표기법은 있지이다. 혹 영어명인 'ITZY'로만 들어본 사람들이
+          한글로는 어떻게 적는지 몰라 '잇지'라고 부르는 경우도 꽤 많이 있는데,
+          '있지'라고 불러야 한다며 정정해주는 것이 팬덤 잇지에게는 일상이 되었다.
+        </p>
+        <button class="btn-close" id="btnClose2">상세 설명 닫기</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // 인라인 방식 : 함수 정의만 해두고 onclick에서 호출
+    function showDetail(cardId) {
+      const card = document.getElementById(cardId);
+      card.querySelector(".detail").style.display = "block";
+      card.querySelector(".btn-overlay").style.display = "none";
+    }
+
+    function hideDetail(cardId) {
+      const card = document.getElementById(cardId);
+      card.querySelector(".detail").style.display = "none";
+      card.querySelector(".btn-overlay").style.display = "block";
+    }
+
+    // 이벤트 등록 방식 : addEventListener로 버튼 이벤트 등록
+    document.getElementById("btnOpen2").addEventListener("click", function () {
+      document.getElementById("detail2").style.display = "block";
+      this.style.display = "none";
+    });
+
+    document.getElementById("btnClose2").addEventListener("click", function () {
+      document.getElementById("detail2").style.display = "none";
+      document.getElementById("btnOpen2").style.display = "block";
+    });
+  </script>
+
+</body>
+
+</html>

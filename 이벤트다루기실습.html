@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Color Changer</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .btn-wrap {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .container {
+      width: 800px;
+      height: 400px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-green {
+      background-color: green;
+    }
+
+    .btn-orange {
+      background-color: orange;
+    }
+
+    .btn-purple {
+      background-color: purple;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="btn-wrap">
+    <button class="btn-green" onclick="changeColor('green')">Green</button>
+    <button class="btn-orange" onclick="changeColor('orange')">Orange</button>
+    <button class="btn-purple" onclick="changeColor('purple')">Purple</button>
+  </div>
+
+  <div class="container"></div>
+
+  <script>
+    // 개선 : 거의 동일한 함수 3개 → 매개변수를 받는 함수 1개로 통합
+    // 개선 : 버튼 색상 변경 코드 제거 (container만 변경하면 충분)
+    // 개선 : 함수명을 event1/2/3 → 기능을 설명하는 changeColor로 변경
+    function changeColor(color) {
+      // 개선 : button1, div1 등 불필요한 변수 제거 → container만 선택
+      const container = document.querySelector(".container");
+      container.style.background = color; // 매개변수 color로 색상 적용
+    }
+  </script>
+
+</body>
+
+</html>
